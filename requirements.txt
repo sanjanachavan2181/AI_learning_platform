@@ -1,0 +1,6 @@
+Flask
+mysql-connector-python
+reportlab
+requests
+Flask-Mail
+gunicorn

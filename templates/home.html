@@ -1,1 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNITEST - AI Quiz Generator</title>
 
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#0d1b2a;
+color:white;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+border:2px solid white;
+padding:6px 15px;
+border-radius:6px;
+}
+
+.nav-links a{
+margin-left:20px;
+text-decoration:none;
+color:white;
+font-weight:500;
+}
+
+/* HERO SECTION */
+
+.hero{
+text-align:center;
+padding:80px 10%;
+background:linear-gradient(135deg,#13293d,#1c3b57);
+}
+
+.hero-icon{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:50px;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+.hero h2{
+font-size:22px;
+color:#cfd8dc;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:800px;
+margin:auto;
+line-height:1.6;
+color:#b0bec5;
+}
+
+/* FEATURES */
+
+.features{
+width:90%;
+margin:auto;
+padding:70px 0;
+}
+
+.features h2{
+text-align:center;
+margin-bottom:50px;
+font-size:32px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+background:#13293d;
+padding:30px;
+border-radius:15px;
+border:1px solid rgba(255,255,255,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.icon{
+width:60px;
+height:60px;
+background:#1e3a5f;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:12px;
+font-size:28px;
+margin-bottom:15px;
+}
+
+.card p{
+color:#b0bec5;
+font-size:14px;
+line-height:1.5;
+}
+
+/* TRENDING */
+
+.trending{
+width:90%;
+margin:auto;
+padding:70px 0;
+}
+
+.trending h2{
+font-size:32px;
+margin-bottom:40px;
+}
+
+.trending-cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.trend-card{
+background:#13293d;
+padding:30px;
+border-radius:15px;
+border:1px solid rgba(255,255,255,0.1);
+}
+.trending-cards:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.badge{
+padding:5px 12px;
+border-radius:20px;
+font-size:12px;
+display:inline-block;
+margin-bottom:15px;
+}
+
+.popular{background:#4caf50;}
+.featured{background:#03a9f4;}
+.trending-badge{background:#8bc34a;}
+
+.users{
+margin-top:15px;
+color:#b0bec5;
+font-size:14px;
+}
+
+/* HOW IT WORKS */
+
+.how-it-works{
+width:90%;
+margin:auto;
+padding:80px 0;
+text-align:center;
+}
+
+.subtitle{
+color:#b0bec5;
+margin-bottom:50px;
+}
+
+.steps{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.step{
+background:#13293d;
+padding:30px;
+border-radius:15px;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.step-number{
+width:40px;
+height:40px;
+background:#4caf50;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:10px;
+margin-bottom:15px;
+font-weight:bold;
+}
+
+.step p{
+color:#b0bec5;
+font-size:14px;
+line-height:1.5;
+}
+
+.buttons{
+margin-top:30px;
+}
+
+.custom-btn{
+padding:14px 28px;
+border:none;
+border-radius:8px;
+margin:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+.btn1{
+background:var(--primary-color);
+color:white;
+}
+
+.btn2{
+background:#6366f1;
+color:white;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">🎓 UniTest</div>
+
+<div class="nav-links">
+<a href="#">Login</a>
+<a href="#">Sign Up</a>
+</div>
+
+</div>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<div class="hero-icon">🎓</div>
+
+<h1>UNITEST - #1 AI Quiz Generator<br>
+& AI Learning Platform</h1>
+
+<h2>The Best AI-Based Quiz Generator for Students and Teachers</h2>
+
+<p>
+UNITEST is the #1 AI-based quiz generator and AI learning platform.
+Create personalized AI-generated quizzes, coding questions, and assessments
+with Google Gemini AI. Experience AI learning at its finest.
+</p>
+<div class="buttons">
+<button class="custom-btn btn1">Get Started</button>
+<button class="custom-btn btn2">Login</button>
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<h2>Why Choose UNITEST</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">🧠</div>
+<h3>AI Quiz Generator</h3>
+<p>Generate intelligent AI-powered quizzes for personalized learning.</p>
+</div>
+
+<div class="card">
+<div class="icon">📈</div>
+<h3>Bloom's Taxonomy</h3>
+<p>Progress through different cognitive levels from remembering to analysis.</p>
+</div>
+
+<div class="card">
+<div class="icon">🤖</div>
+<h3>AI Learning Platform</h3>
+<p>Experience AI learning with intelligent evaluation and feedback.</p>
+</div>
+
+<div class="card">
+<div class="icon">💻</div>
+<h3>Coding Questions</h3>
+<p>Practice coding with real-time execution and test cases.</p>
+</div>
+
+<div class="card">
+<div class="icon">📄</div>
+<h3>Document Upload</h3>
+<p>Upload study materials and generate quizzes automatically.</p>
+</div>
+
+<div class="card">
+<div class="icon">📊</div>
+<h3>Progress Tracking</h3>
+<p>Track your learning progress with analytics and visualization.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TRENDING FEATURES -->
+
+<section class="trending">
+
+<h2>Trending Features</h2>
+
+<div class="trending-cards">
+
+<div class="trend-card">
+<span class="badge popular">Popular</span>
+<h3>AI Quiz Generation</h3>
+<p>Generate unlimited quizzes on any topic with Google Gemini AI</p>
+<div class="users">👥 8,245 active</div>
+</div>
+
+<div class="trend-card">
+<span class="badge featured">Featured</span>
+<h3>Coding Practice</h3>
+<p>Practice coding with real-time execution and test cases</p>
+<div class="users">👥 6,892 active</div>
+</div>
+
+<div class="trend-card">
+<span class="badge trending-badge">Trending</span>
+<h3>Smart Assessment</h3>
+<p>AI-powered evaluation with instant feedback</p>
+<div class="users">👥 5,123 active</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="how-it-works">
+
+<h2>How It Works</h2>
+
+<p class="subtitle">
+Get started in minutes and transform your learning experience
+</p>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">1</div>
+<h3>Choose Your Topic</h3>
+<p>Enter any subject or topic you want to learn about or upload materials.</p>
+</div>
+
+<div class="step">
+<div class="step-number">2</div>
+<h3>AI Generates Questions</h3>
+<p>Advanced AI creates personalized questions based on your topic.</p>
+</div>
+
+<div class="step">
+<div class="step-number">3</div>
+<h3>Take the Quiz</h3>
+<p>Answer questions and receive instant feedback.</p>
+</div>
+
+<div class="step">
+<div class="step-number">4</div>
+<h3>Track Progress</h3>
+<p>Monitor your learning progress and improve step by step.</p>
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>

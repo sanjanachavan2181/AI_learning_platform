@@ -1,0 +1,1 @@
+AI Learning Platform is a web-based educational application developed using Python, Flask, HTML, CSS, JavaScript, and MySQL. It provides students with courses, quizzes, chatbot-based learning assistance, progress tracking, certificates, and performance analytics.

@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<style>
+body {
+    background: #0d1b2a;
+    font-family: Arial, sans-serif;
+}
+
+/* Chat container */
+.chat-container {
+    width: 60%;
+    margin: 40px auto;
+    background: #1b263b;
+    padding: 20px;
+    border-radius: 12px;
+    height: 500px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Messages */
+.message {
+    max-width: 65%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Bot message (LEFT - BLUE) */
+.bot {
+    background: #3b82f6;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+/* User message (RIGHT) */
+.user {
+    background: #e5e7eb;
+    color: black;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+/* Input area */
+/* Input area (FIXED & BIGGER) */
+.chat-input {
+    width: 60%;
+    margin: 15px auto;
+    display: flex;
+    gap: 10px;
+    background: #1b263b;
+    padding: 10px;
+    border-radius: 12px;
+    align-items: center;
+}
+
+/* Bigger input field */
+.chat-input input {
+    flex: 1;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+/* Bigger button */
+.chat-input button {
+    padding: 14px 22px;
+    font-size: 15px;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Button hover */
+.chat-input button:hover {
+    background: #2563eb;
+}
+
+/* Typing animation */
+.typing {
+    font-style: italic;
+    opacity: 0.7;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar */
+.chat-container::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-container::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 10px;
+}
+
+/* Icon buttons (mic + file) */
+.icon-btn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Send button (green) */
+.chat-input button[type="submit"] {
+    background: #22c55e;
+    padding: 12px 16px;
+}
+
+/* Hover */
+.icon-btn:hover {
+    background: #2563eb;
+}
+</style>
+
+<h2 style="text-align:center;">🤖 AI Tutor - {{ topic_name }}</h2>
+
+<div class="chat-container" id="chatBox">
+
+    {% for msg in chat_history %}
+        {% if msg.role == 'user' %}
+            <div class="message user">{{ msg.content }}</div>
+        {% else %}
+            <div class="message bot">{{ msg.content | safe }}</div>
+        {% endif %}
+    {% endfor %}
+
+</div>
+
+<form method="POST" enctype="multipart/form-data" onsubmit="showTyping()">
+    <div class="chat-input">
+
+        <!-- File Upload -->
+        <label for="fileUpload" class="icon-btn">📎</label>
+        <input type="file" id="fileUpload" name="file" hidden>
+
+        <!-- Text Input -->
+        <input type="text" name="message" id="msgInput" placeholder="Ask something..." required>
+
+        <!-- Voice Button -->
+        <button type="button" onclick="startVoice()" class="icon-btn">🎤</button>
+
+        <!-- Send -->
+        <button type="submit">➤</button>
+
+    </div>
+</form>
+
+<script>
+// Auto scroll to bottom
+let chatBox = document.getElementById("chatBox");
+chatBox.scrollTop = chatBox.scrollHeight;
+
+// Show typing animation
+function showTyping() {
+    let box = document.getElementById("chatBox");
+
+    let typingDiv = document.createElement("div");
+    typingDiv.className = "message bot typing";
+    typingDiv.id = "typing";
+    typingDiv.innerText = "🤖 AI is thinking...";
+
+    box.appendChild(typingDiv);
+    box.scrollTop = box.scrollHeight;
+}
+
+function startVoice() {
+    if (!('webkitSpeechRecognition' in window)) {
+        alert("Voice not supported in this browser");
+        return;
+    }
+
+    let recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-IN"; // or "hi-IN"
+    recognition.start();
+
+    let input = document.getElementById("msgInput");
+
+    recognition.onstart = function() {
+        input.placeholder = "Listening...";
+    };
+
+    recognition.onresult = function(event) {
+        let text = event.results[0][0].transcript;
+        input.value = text;
+    };
+
+    recognition.onend = function() {
+        input.placeholder = "Ask something...";
+    };
+}
+</script>
+
+{% endblock %}
